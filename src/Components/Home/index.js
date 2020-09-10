@@ -27,7 +27,8 @@ class Home extends React.Component{
 				"https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/download/APP?period1=1568005508&period2=1599627908&interval=1d&events=history",
 				"https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/download/GOOG?period1=1568005508&period2=1599627908&interval=1d&events=history",
 				"https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/download/MSFT?period1=1568005508&period2=1599627908&interval=1d&events=history"
-			]
+			],
+			loading: false
 		}
 		this.addChart = this.addChart.bind(this);
 		this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -37,6 +38,7 @@ class Home extends React.Component{
 		let points = [];
 		let csv_url = (stock==='apple')?csv_urls[0]:(stock==='google')?csv_urls[1]:csv_urls[2];
 
+		this.setState({loading: true});
 		JSC.fetch(csv_url)
 		.then(response => response.text())
 		.then(text => {
@@ -78,6 +80,7 @@ class Home extends React.Component{
 					label_text:'<b>%xValue</b><br>%points'
 				} 
 			});
+			this.setState({loading: false})
 		})
 		.catch(err=>{
 			console.log(err);
@@ -215,7 +218,7 @@ class Home extends React.Component{
 				let points = [];
 				let csv_url = (last_values[i].value==='apple')?csv_urls[0]:(last_values[i].value==='google')?csv_urls[1]:(last_values[i].value==='microsoft')?csv_urls[2]:'';
 
-
+				this.setState({loading: true});
 				if(csv_url){
 					JSC.fetch(csv_url)
 					.then(response => response.text())
@@ -258,6 +261,7 @@ class Home extends React.Component{
 						    label_text:'<b>%xValue</b><br>%points'
 						  } 
 						});
+					  	this.setState({loading: false})
 					})
 					.catch(err=>{
 						console.log(err);
@@ -276,8 +280,6 @@ class Home extends React.Component{
 					  ]
 					});
 				}
-
-	
 			}
 		}
 	}
@@ -285,6 +287,15 @@ class Home extends React.Component{
 	render(){	
 		return(
 			<div className="wrapper">
+				{
+					this.state.loading?
+						<div className="overlay-mask">
+							<i className="fa fa-refresh fa-spin" style={{ fontSize: '60px' }}></i>
+						</div>
+					:
+					false
+				}
+
 				{/* navbar starts */}
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
 				  <Link className="navbar-brand" to="/">Charts</Link>
