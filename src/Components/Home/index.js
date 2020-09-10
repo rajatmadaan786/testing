@@ -37,7 +37,7 @@ class Home extends React.Component{
 		let points = [];
 		let csv_url = (stock==='apple')?csv_urls[0]:(stock==='google')?csv_urls[1]:csv_urls[2];
 
-		JSC.fetch(csv_url)
+		JSC.fetch('https://cors-anywhere.herokuapp.com/'+csv_url)
 		.then(response => response.text())
 		.then(text => {
 			let data = JSC.csv2Json(text);
