@@ -37,12 +37,10 @@ class Home extends React.Component{
 		let points = [];
 		let csv_url = (stock==='apple')?csv_urls[0]:(stock==='google')?csv_urls[1]:csv_urls[2];
 
-		JSC.fetch('https://cors-anywhere.herokuapp.com/'+csv_url)
+		JSC.fetch(csv_url)
 		.then(response => response.text())
 		.then(text => {
 			let data = JSC.csv2Json(text);
-		  	delete data['columns'];
-		  	delete data['types'];
 		  	for(var i=0;i<data.length;i++){
 		  		let arr = [];
 		  		arr.push(JSC.formatDate(data[i]['Date'], "d"));
@@ -50,39 +48,36 @@ class Home extends React.Component{
 		  		points.push(arr);
 		  	}
 
-		  	let chartContainer = document.getElementById(chartId);
 
-	  		if(chartContainer){
-	  			let cont = document.getElementsByClassName('chart-container')[0];
-			  	var chart = JSC.chart(chartId, { 
-					debug: true, 
-					type: 'line', 
-					title_label_text: '', 
-					legend_position: 'inside bottom right', 
-					toolbar_items: { 
-						'Line Type': { 
-							type: 'select', 
-							label_style_fontSize: 13, 
-							margin: 5, 
-							items: 'Line,Step,Spline', 
-							events_change: function(val) { 
-								chart.series().options({ type: val }); 
-							} 
+  			let cont = document.getElementsByClassName('chart-container')[0];
+		  	var chart = JSC.chart(chartId, { 
+				debug: true, 
+				type: 'line', 
+				title_label_text: '', 
+				legend_position: 'inside bottom right', 
+				toolbar_items: { 
+					'Line Type': { 
+						type: 'select', 
+						label_style_fontSize: 13, 
+						margin: 5, 
+						items: 'Line,Step,Spline', 
+						events_change: function(val) { 
+							chart.series().options({ type: val }); 
 						} 
-					}, 
-					xAxis: { scale_type: 'time' }, 
-					series: [ 
-						{ 
-						  name: '', 
-						  points: points
-						} 
-					],
-					defaultTooltip:{
-						combined:true,
-						label_text:'<b>%xValue</b><br>%points'
 					} 
-				});
-	  		}
+				}, 
+				xAxis: { scale_type: 'time' }, 
+				series: [ 
+					{ 
+					  name: '', 
+					  points: points
+					} 
+				],
+				defaultTooltip:{
+					combined:true,
+					label_text:'<b>%xValue</b><br>%points'
+				} 
+			});
 		})
 		.catch(err=>{
 			console.log(err);
@@ -234,10 +229,8 @@ class Home extends React.Component{
 					  		arr.push(data[i]["Adj Close"]);
 					  		points.push(arr);
 					  	}
-					})
 
-					setTimeout(function(){
-						var chart = JSC.chart(elmnt, { 
+					  	var chart = JSC.chart(elmnt, { 
 						  debug: true, 
 						  type: 'line', 
 						  title_label_text: '', 
@@ -265,7 +258,15 @@ class Home extends React.Component{
 						    label_text:'<b>%xValue</b><br>%points'
 						  } 
 						});
-					},2000);					
+					})
+					.catch(err=>{
+						console.log(err);
+						swal({
+							title: "Error",
+							text: "Error occured while fetching financial data!",
+							icon: "warning",
+						})
+					})		
 				}else{
 					JSC.Chart(elmnt, {
 					  series: [
