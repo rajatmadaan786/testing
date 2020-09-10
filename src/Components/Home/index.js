@@ -24,9 +24,9 @@ class Home extends React.Component{
 		super();
 		this.state ={
 			csv_urls:[
-				"https://query1.finance.yahoo.com/v7/finance/download/APP?period1=1568005508&period2=1599627908&interval=1d&events=history",
-				"https://query1.finance.yahoo.com/v7/finance/download/GOOG?period1=1568005508&period2=1599627908&interval=1d&events=history",
-				"https://query1.finance.yahoo.com/v7/finance/download/MSFT?period1=1568005508&period2=1599627908&interval=1d&events=history"
+				"https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/download/APP?period1=1568005508&period2=1599627908&interval=1d&events=history",
+				"https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/download/GOOG?period1=1568005508&period2=1599627908&interval=1d&events=history",
+				"https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/download/MSFT?period1=1568005508&period2=1599627908&interval=1d&events=history"
 			]
 		}
 		this.addChart = this.addChart.bind(this);
