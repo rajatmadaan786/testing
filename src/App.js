@@ -1,12 +1,16 @@
 import React from 'react';
-import Routing from './Router/';
+import {
+  BrowserRouter as Router,
+  Route
+} from "react-router-dom";
+import Home from './Components/Home/';
 
 class App extends React.Component {
 	render(){
 		return (
-			<div className="App">
-				<Routing/>
-			</div>
+			<Router>
+	          <Route path="/" component={Home}></Route>
+	        </Router>
 		);
 	}
 }
