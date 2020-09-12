@@ -1,6 +1,6 @@
 {
   "name": "test",
-  "homepage":"https://rajatmadaan786.github.io/",
+  "homepage":"https://rajatmadaan786.github.io/testing/",
   "version": "0.1.0",
   "private": true,
   "proxy": "https://query1.finance.yahoo.com/v7/finance/download/GOOG?period1=1568005508&period2=1599627908&interval=1d&events=history",
