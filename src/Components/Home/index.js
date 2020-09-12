@@ -69,37 +69,39 @@ class Home extends React.PureComponent{
 		divLeft = 0;
 
 		function moveElement(xpos,ypos){
-            elm.style.left = xpos + 'px';
-            elm.style.top = ypos + 'px';
+	        elm.style.left = xpos + 'px';
+	        elm.style.top = ypos + 'px';
 		}
 
 		event = event || window.event;
-        posX = event.clientX; // horizontal mouse position when clicked
-        posY = event.clientY;     // vertical mouse position when clicked
+	    posX = event.clientX; // horizontal mouse position when clicked
+	    posY = event.clientY;     // vertical mouse position when clicked
 
-        divTop = elm.style.top.replace('px','');   
-        divLeft = elm.style.left.replace('px','');
 
-        diffX = posX - divLeft;
-        diffY = posY - divTop;
+	    divTop = elm.style.top.replace('px','');   
+	    divLeft = elm.style.left.replace('px','');
 
-        function onMouseMove(evt){
+
+	    diffX = posX - divLeft;
+	    diffY = posY - divTop;
+
+	    function onMouseMove(evt){
 			evt = evt || window.event;
-            posX = evt.clientX;
-            posY = evt.clientY;
+	        posX = evt.clientX;
+	        posY = evt.clientY;
 
-            aX = posX - diffX;
-            aY = posY - diffY;
+	        aX = posX - diffX;
+	        aY = posY - diffY;
 	       	bound=document.getElementsByClassName("draggable-elements")[0].offsetWidth-elm.offsetWidth;
 	           
-            if((aX>0)&&(aX<bound)&&(aY>0)&&(aY<bound)){
+	        if((aX>0)&&(aX<bound)&&(aY>0)&&(aY<bound)){
 	            moveElement(aX,aY);
-            }
-        }
+	        }
+	    }
 
-        document.addEventListener('mousemove', onMouseMove);
+	    document.addEventListener('mousemove', onMouseMove);
 
-        elm.onmouseup = function(event) {
+	    elm.onmouseup = function(event) {
 			document.removeEventListener('mousemove', onMouseMove);
 			elm.onmouseup = null;
 		};
@@ -196,9 +198,17 @@ class Home extends React.PureComponent{
 		elmnt.className = 'chart';
 		elmnt.id = 'chart_'+chartNum;
 
+		let availableElements = document.querySelectorAll('.elements-wrapper');
+
 		let elements_wrapper = document.createElement('div');
 		elements_wrapper.className="elements-wrapper";
 		elements_wrapper.id = 'element_'+chartNum;
+
+		let windowsWidth = window.innerWidth;
+
+		if(availableElements.length>0)
+			elements_wrapper.style.left = (340*availableElements.length)+'px';
+
 		elements_wrapper.appendChild(elmnt);
 
 		//Create array of options to be added
@@ -209,20 +219,16 @@ class Home extends React.PureComponent{
 		selectList.id = "select_"+chartNum;
 		selectList.onchange = this.onChangeHandler
 
-		let dragMe = document.createElement('div');
-		dragMe.classList.add('draggable-div');
-		dragMe.innerHTML = 'Drag me';
 
 		let header_container = document.createElement('div');
-		header_container.appendChild(selectList)
-		header_container.appendChild(dragMe);
+		header_container.appendChild(selectList);
 
 		header_container.classList.add('chart-element-header');
 		
 		elements_wrapper.prepend(header_container);
 
 		if(window.innerWidth>=1024){
-			dragMe.addEventListener('mousedown',function(event){
+			header_container.addEventListener('mousedown',function(event){
 				newThis.addDragAbility(event,elements_wrapper)
 			})
 		}
@@ -290,7 +296,12 @@ class Home extends React.PureComponent{
 				let elementId = 'element_'+last_values[i].id;
 				elements_wrapper.id = elementId;
 				
-				let coordinates = this.fetchStyle(elementId);
+				let coordinates = '';
+				let draggableElementCoordinates = window.localStorage.getItem('draggableElementCoordinates');
+
+				if(draggableElementCoordinates){
+					coordinates = this.fetchStyle(elementId);
+				}
 
 				if(coordinates){
 					elements_wrapper.style.top = coordinates.top;
@@ -316,20 +327,15 @@ class Home extends React.PureComponent{
 				selectList.value = last_values[i].value;
 				selectList.onchange = this.onChangeHandler
 
-				let dragMe = document.createElement('div');
-				dragMe.classList.add('draggable-div');
-				dragMe.innerHTML = 'Drag me';
-
 				let header_container = document.createElement('div');
 				header_container.appendChild(selectList)
-				header_container.appendChild(dragMe);
 
 				header_container.classList.add('chart-element-header');
 
 				elements_wrapper.prepend(header_container);
 
 				if(window.innerWidth>=1024){
-					dragMe.addEventListener('mousedown',function(event){
+					header_container.addEventListener('mousedown',function(event){
 						newThis.addDragAbility(event,elements_wrapper)
 					})					
 				}
