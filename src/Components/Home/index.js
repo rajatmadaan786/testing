@@ -204,9 +204,7 @@ class Home extends React.PureComponent{
 		elements_wrapper.className="elements-wrapper";
 		elements_wrapper.id = 'element_'+chartNum;
 
-		let windowsWidth = window.innerWidth;
-
-		if(availableElements.length>0)
+		if(availableElements.length>0 && window.innerWidth>=1024)
 			elements_wrapper.style.left = (340*availableElements.length)+'px';
 
 		elements_wrapper.appendChild(elmnt);
