@@ -23,7 +23,7 @@ class Routing extends React.Component {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/chat" component={ChatBot} />
-            <Route path="*" component={PageNotFound} />
+            <Route path="/*" component={PageNotFound} />
           </Switch>
         </Suspense>
       </Router>

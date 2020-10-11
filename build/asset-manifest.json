@@ -1,21 +1,38 @@
 {
   "files": {
-    "main.css": "/testing/static/css/main.0e2e7a12.chunk.css",
-    "main.js": "/testing/static/js/main.200a76f4.chunk.js",
-    "main.js.map": "/testing/static/js/main.200a76f4.chunk.js.map",
-    "runtime-main.js": "/testing/static/js/runtime-main.88a84688.js",
-    "runtime-main.js.map": "/testing/static/js/runtime-main.88a84688.js.map",
-    "static/js/2.80a94723.chunk.js": "/testing/static/js/2.80a94723.chunk.js",
-    "static/js/2.80a94723.chunk.js.map": "/testing/static/js/2.80a94723.chunk.js.map",
+    "ChatBot.css": "/testing/static/css/ChatBot.5001eae6.chunk.css",
+    "ChatBot.js": "/testing/static/js/ChatBot.54545fb9.chunk.js",
+    "ChatBot.js.map": "/testing/static/js/ChatBot.54545fb9.chunk.js.map",
+    "Home.css": "/testing/static/css/Home.722c745c.chunk.css",
+    "Home.js": "/testing/static/js/Home.8c08303b.chunk.js",
+    "Home.js.map": "/testing/static/js/Home.8c08303b.chunk.js.map",
+    "Login.css": "/testing/static/css/Login.058b6764.chunk.css",
+    "Login.js": "/testing/static/js/Login.bfab30fd.chunk.js",
+    "Login.js.map": "/testing/static/js/Login.bfab30fd.chunk.js.map",
+    "PageNotFound.js": "/testing/static/js/PageNotFound.7491e0cf.chunk.js",
+    "PageNotFound.js.map": "/testing/static/js/PageNotFound.7491e0cf.chunk.js.map",
+    "main.js": "/testing/static/js/main.e8e47ca3.chunk.js",
+    "main.js.map": "/testing/static/js/main.e8e47ca3.chunk.js.map",
+    "runtime-main.js": "/testing/static/js/runtime-main.ee6477ab.js",
+    "runtime-main.js.map": "/testing/static/js/runtime-main.ee6477ab.js.map",
+    "static/js/6.bf4ac234.chunk.js": "/testing/static/js/6.bf4ac234.chunk.js",
+    "static/js/6.bf4ac234.chunk.js.map": "/testing/static/js/6.bf4ac234.chunk.js.map",
+    "static/js/7.537b5db1.chunk.js": "/testing/static/js/7.537b5db1.chunk.js",
+    "static/js/7.537b5db1.chunk.js.map": "/testing/static/js/7.537b5db1.chunk.js.map",
+    "static/css/8.5972a0e7.chunk.css": "/testing/static/css/8.5972a0e7.chunk.css",
+    "static/js/8.cd1745dc.chunk.js": "/testing/static/js/8.cd1745dc.chunk.js",
+    "static/js/8.cd1745dc.chunk.js.map": "/testing/static/js/8.cd1745dc.chunk.js.map",
     "index.html": "/testing/index.html",
-    "precache-manifest.8ac7fa5c70bb845fed40641031d09857.js": "/testing/precache-manifest.8ac7fa5c70bb845fed40641031d09857.js",
+    "precache-manifest.c633f31042fcf9b0ad73232aeb5145c3.js": "/testing/precache-manifest.c633f31042fcf9b0ad73232aeb5145c3.js",
     "service-worker.js": "/testing/service-worker.js",
-    "static/css/main.0e2e7a12.chunk.css.map": "/testing/static/css/main.0e2e7a12.chunk.css.map"
+    "static/css/8.5972a0e7.chunk.css.map": "/testing/static/css/8.5972a0e7.chunk.css.map",
+    "static/css/ChatBot.5001eae6.chunk.css.map": "/testing/static/css/ChatBot.5001eae6.chunk.css.map",
+    "static/css/Home.722c745c.chunk.css.map": "/testing/static/css/Home.722c745c.chunk.css.map",
+    "static/css/Login.058b6764.chunk.css.map": "/testing/static/css/Login.058b6764.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.88a84688.js",
-    "static/js/2.80a94723.chunk.js",
-    "static/css/main.0e2e7a12.chunk.css",
-    "static/js/main.200a76f4.chunk.js"
+    "static/js/runtime-main.ee6477ab.js",
+    "static/js/6.bf4ac234.chunk.js",
+    "static/js/main.e8e47ca3.chunk.js"
   ]
 }
