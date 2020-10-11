@@ -1,16 +1,12 @@
 import React from 'react';
-import {
-  HashRouter as Router,
-  Route
-} from "react-router-dom";
-import Home from './Components/Home/';
+import Routing from './Router/';
 
 class App extends React.Component {
 	render(){
 		return (
-			<Router>
-	          <Route path="/" component={Home}></Route>
-	        </Router>
+			<div className="App">
+				<Routing/>
+			</div>
 		);
 	}
 }
