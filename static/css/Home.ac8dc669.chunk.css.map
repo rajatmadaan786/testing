@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,EACC,QAAQ,CACR,SACD,CAEA,sBACC,qBAAsB,CACtB,2BACD","file":"Home.ac8dc669.chunk.css","sourcesContent":["*{\r\n\tmargin:0;\r\n\tpadding:0;\r\n}\r\n\r\n.highcharts-container{\r\n\tborder: 1px solid #ccc;\r\n\tbox-shadow: 1px 2px 3px #ccc;\r\n}"]}
